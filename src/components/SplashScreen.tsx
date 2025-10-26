@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Leaf } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // Assuming 'next/font/google' works in your environment, but simplified here 
 // for canvas execution by using a direct class name if possible, 
@@ -23,7 +24,7 @@ const mockUseRouter = () => ({
 
 export default function SplashScreen() {
   // const router = useRouter(); // Original line
-  const router = mockUseRouter(); // 🟢 FIX: Use mock router to prevent import error
+  const router = useRouter(); // 🟢 FIX: Use mock router to prevent import error
   const [progress, setProgress] = useState(0);
   
   // 1. New state to track when loading is truly finished
