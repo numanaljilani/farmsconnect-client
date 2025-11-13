@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Providers } from "@/components/providers";
 import  Header  from "@/components/Header";
 import ReduxWrapper from "@/components/ReduxWrapper";
+import Footer from "@/components/Fotter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <ReduxWrapper>
           <Header />
           <Providers>{children}</Providers>
+          <Footer/>
         </ReduxWrapper>
       </body>
     </html>

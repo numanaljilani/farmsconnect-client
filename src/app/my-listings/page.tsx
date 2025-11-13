@@ -28,6 +28,7 @@ import {
   useGetMyListingsQuery,
   useUpdateListingMutation,
   useDeleteListingMutation,
+  useGetListingsQuery,
   // Assuming the Listing type from your api.ts file
   // You should import the actual types if possible, otherwise redefine.
 } from "@/lib/api"; // Adjust the import path to your api file
@@ -94,13 +95,17 @@ export default function MyListings() {
   // );
 
   // **Using RTK Query for Data Fetching**
+
   const { 
     data: listingsResponse, 
     isLoading: isListingsLoading, 
     isFetching: isListingsFetching, 
     error: listingsError 
-  } = useGetMyListingsQuery();
+    // ts-ignore
+  } = useGetListingsQuery({});
 
+
+console.log(listingsResponse , "listingsResponse")
   const [updateListing, { isLoading: isUpdating }] = useUpdateListingMutation();
   const [deleteListing, { isLoading: isDeleting }] = useDeleteListingMutation();
 
@@ -260,6 +265,7 @@ export default function MyListings() {
 
 
   if (listingsError) {
+    console.log(listingsError)
     return (
       <div className="text-center py-20">
         <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-4" />

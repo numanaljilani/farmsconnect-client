@@ -171,13 +171,8 @@ export const api = createApi({
     // 3. GET MY LISTINGS (Query)
     getMyListings: builder.query<ListingsResponse, void>({
       query: () => "/listings/my", // Matches GET /api/listings/my route
-      providesTags: (result) => 
-        result ? [
-            ...result.data.map(({ _id }) => ({ type: 'Listing' as const, id: _id })),
-            { type: 'Listing', id: 'MY_LIST' }, // Specific tag for my listings
-        ]
-        : [{ type: 'Listing', id: 'MY_LIST' }],
-    }),
+      // providesTags: (result) => result
+     }),
 
     // 4. UPDATE LISTING (Mutation)
     updateListing: builder.mutation<Listing, UpdateListingRequest | any>({
