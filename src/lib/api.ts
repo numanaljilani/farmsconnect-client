@@ -61,10 +61,11 @@ interface LoginRequest {
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://farmsconnect-server-01.vercel.app/api/",
-    // baseUrl: "http://localhost:5000/api/",
+    // baseUrl: "https://farmsconnect-server-01.vercel.app/api/",
+    baseUrl: "http://localhost:5000/api/",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).auth.token;
+      console.log(token)
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
@@ -169,9 +170,10 @@ export const api = createApi({
     }),
 
     // 3. GET MY LISTINGS (Query)
-    getMyListings: builder.query<ListingsResponse, void>({
-      query: () => "/listings/my", // Matches GET /api/listings/my route
+    getMyListings: builder.query({
+      query: (filters) =>({url : "/listings/my" , params : filters}), // Matches GET /api/listings/my route
       // providesTags: (result) => result
+      
      }),
 
     // 4. UPDATE LISTING (Mutation)

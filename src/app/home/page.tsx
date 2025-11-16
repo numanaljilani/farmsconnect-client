@@ -139,6 +139,8 @@ export default function Home() {
         isError: isNearestListingsError,
         refetch: refetchNearestListings
     } = useGetListingsQuery(nearestQueryParams);
+
+    
     const nearestListings: Listing[] = nearestListingsResponse?.data || [];
     const nearestIsLoading = isNearestListingsLoading || isNearestListingsFetching;
 
@@ -150,22 +152,7 @@ export default function Home() {
             
             {/* Hero Section with Carousel */}
             <section className="space-y-4 mt-5">
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-3xl md:text-4xl font-bold text-gray-800 text-center"
-                >
-                    Welcome to Farmsconnect 🌾
-                </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                    className="text-lg text-gray-600 text-center mb-6"
-                >
-                    Gaon se Bazaar Tak, Sab Kuch Ek Jagah
-                </motion.p>
+               
                 <AdsCarousel />
             </section>
 
